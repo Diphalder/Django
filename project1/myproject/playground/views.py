@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
+from django.template import loader
+
 # Create your views here.
 # rqst -> responds
 # rqsr handler
@@ -18,5 +20,10 @@ def renderhtmlfile(request):
     # transform
     # send email
     return render(request,'hello.html' , { 'nameVar' : 'Dip Halder'})
+
+
+def members(request):
+  template = loader.get_template('hello.html')
+  return HttpResponse(template.render())
 
 
